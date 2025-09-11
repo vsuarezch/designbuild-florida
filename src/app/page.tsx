@@ -73,7 +73,6 @@ const SERVICES = [
 const PORTFOLIO = [
   // Replace the src values with your real images (Wix Media, S3, or local /public)
   { src: "/images/portfolio/panelized2.jpg", alt: "Design-Build of sea front luxury panelized house", caption: "Design-Build of sea front luxury panelized house" },
-  { src: "/images/portfolio/panelized1.jpg", alt: "Panelized building in Miami Dade", caption: "Panelized building in Miami Dade" },
   { src: "/images/portfolio/gatlin.jpeg", alt: "Design-Build of metal trusses for commertial project", caption: "Design-Install of metal trusses for commertial project" },
   { src: "/images/portfolio/trusses1.jpeg", alt: "Design-Install of metal trusses for residential project", caption: "Design-Install of metal trusses for residential project" },
   { src: "/images/portfolio/mod1.jpg", alt: "Design-Install", caption: "Modular Glamping unit" },
