@@ -2,9 +2,9 @@
 
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Building2, Wrench, Ruler, FileSpreadsheet, Hammer, BadgeCheck, Phone, Mail, MapPin, Linkedin, ChevronRight, Images, FileText, ClipboardCheck, HardHat, CheckCircle2 } from "lucide-react";
+import { Building2, Ruler, FileSpreadsheet, Hammer, BadgeCheck, Phone, Mail, MapPin, Linkedin, ChevronRight, Images, ClipboardCheck, HardHat, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -120,11 +120,11 @@ export default function DesignBuildFloridaSite() {
     return form.name.trim() && /.+@.+\..+/.test(form.email) && form.message.trim();
   }, [form]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Replace this with your API or Formspree endpoint
-    // Example: fetch("https://formspree.io/f/xxxx", { method: "POST", body: JSON.stringify(form) })
-    setSent(true);
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  // Replace this with your API or Formspree endpoint
+  // Example: fetch("https://formspree.io/f/xxxx", { method: "POST", body: JSON.stringify(form) })
+  setSent(true);
   }
 
   return (
