@@ -24,7 +24,7 @@ const SERVICES = [
     title: "Structural Engineering (FL)",
     points: [
       "Cold-Formed Steel (CFS), structural steel, CMU & reinforced concrete",
-      "Design to FBC 2023 / ASCE 7-22 / ACI 318 /  AISC365 / AISI S100-S240",
+      "Design to FBC 2023 / ASCE 7-22 / ACI 318 /  AISC360 / AISI S100-S240",
       "Signed & sealed calculations and letters"
     ],
   },
@@ -73,11 +73,11 @@ const SERVICES = [
 const PORTFOLIO = [
   // Replace the src values with your real images (Wix Media, S3, or local /public)
   { src: "/images/portfolio/panelized2.jpg", alt: "Design-Build of sea front luxury panelized house", caption: "Design-Build of sea front luxury panelized house" },
-  { src: "/images/portfolio/gatlin.jpeg", alt: "Design-Build of metal trusses for commertial project", caption: "Design-Install of metal trusses for commertial project" },
+  { src: "/images/portfolio/gatlin.jpeg", alt: "Design-Build of metal trusses for commercial project", caption: "Design-Install of metal trusses for commercial project" },
   { src: "/images/portfolio/trusses1.jpeg", alt: "Design-Install of metal trusses for residential project", caption: "Design-Install of metal trusses for residential project" },
   { src: "/images/portfolio/mod1.jpg", alt: "Design-Install", caption: "Modular Glamping unit" },
   { src: "/images/portfolio/mod3.jpg", alt: "Design of modular house", caption: "Design of modular house" },
-  { src: "/images/portfolio/cfshouse1.jpg", alt: "Afordable CFS house", caption: "Afordable CFS house" },
+  { src: "/images/portfolio/cfshouse1.jpg", alt: "Affordable CFS house", caption: "Affordable CFS house" },
   { src: "/images/portfolio/duplex.jpg", alt: "Metal trusses for Duplex house ", caption: "Metal trusses for Duplex house" },
   { src: "/images/portfolio/sd2.png", alt: "Sample truss layout plan", caption: "Sample truss layout plan" },
   { src: "/images/portfolio/sd1.png", alt: "Sample shop drawing and calculation plan", caption: "Sample shop drawing and calculation plan" },
@@ -229,7 +229,7 @@ export default function DesignBuildFloridaSite() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold tracking-tight text-neutral-900">Portfolio</h2>
-              <p className="mt-2 text-neutral-600">Actual project photos accross Florida.</p>
+              <p className="mt-2 text-neutral-600">Actual project photos across Florida.</p>
             </div>
             <div className="hidden md:flex items-center gap-2 text-neutral-600">
               <Images className="h-5 w-5"/>
@@ -369,33 +369,75 @@ export default function DesignBuildFloridaSite() {
               {sent ? (
                 <div className="text-green-700 text-sm">Thanks—your message was captured locally for demo. Connect this form to Formspree or your backend to start receiving submissions.</div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-sm">Name</label>
-                      <Input value={form.name} onChange={(e)=>setForm({...form, name: e.target.value})} placeholder="Your full name"/>
-                    </div>
-                    <div>
-                      <label className="text-sm">Email</label>
-                      <Input value={form.email} onChange={(e)=>setForm({...form, email: e.target.value})} placeholder="you@company.com" type="email"/>
-                    </div>
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-sm">Phone</label>
-                      <Input value={form.phone} onChange={(e)=>setForm({...form, phone: e.target.value})} placeholder="(###) ###-####"/>
-                    </div>
-                    <div>
-                      <label className="text-sm">Service</label>
-                      <Input placeholder="e.g., Permit CDs, CFS CNC, Inspections"/>
-                    </div>
+                <form
+                action="https://formspree.io/f/mdkljnde"
+                method="POST"
+                className="space-y-4"
+              >
+                {/* Subject + redirect + honeypot */}
+                <input type="hidden" name="_subject" value="New quote request - Design Build Florida" />
+                <input type="hidden" name="_next" value="https://www.designbuild-us.com/thank-you" />
+                <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-sm">Name</label>
+                    <Input
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Your full name"
+                    />
                   </div>
                   <div>
-                    <label className="text-sm">Project Details</label>
-                    <Textarea value={form.message} onChange={(e)=>setForm({...form, message: e.target.value})} placeholder="Jurisdiction, scope, target dates, attachments (links)…" rows={5}/>
+                    <label className="text-sm">Email</label>
+                    <Input
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="you@company.com"
+                    />
                   </div>
-                  <Button type="submit" className="w-full rounded-2xl" disabled={!canSubmit}>Send</Button>
-                </form>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-sm">Phone</label>
+                    <Input
+                      name="phone"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="(###) ###-####"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm">Service</label>
+                    <Input
+                      name="service"
+                      placeholder="e.g., Permit CDs, CFS CNC, Inspections"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm">Project Details</label>
+                  <Textarea
+                    name="message"
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Jurisdiction, scope, target dates, attachments (links)…"
+                  />
+                </div>
+
+                <Button type="submit" className="w-full rounded-2xl">
+                  Send
+                </Button>
+              </form>
               )}
             </CardContent>
           </Card>
