@@ -1,0 +1,13 @@
+
+export default function ThankYou() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center px-4">
+      <div className="max-w-lg text-center">
+        <h1 className="text-3xl font-bold">Thank you!</h1>
+        <p className="mt-3 text-neutral-700">
+          Your request was sent. We’ll route it to <strong>Stalo Engineering</strong> (engineering & CDs) or <strong>Design Build Florida</strong> (GC/Install) based on your selection and get back to you within one business day.
+        </p>
+      </div>
+    </div>
+  );
+}
