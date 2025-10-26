@@ -5,7 +5,8 @@ export default function ThankYou() {
       <div className="max-w-lg text-center">
         <h1 className="text-3xl font-bold">Thank you!</h1>
         <p className="mt-3 text-neutral-700">
-          Your request was sent. We’ll route it to <strong>Stalo Engineering</strong> (engineering & CDs) or <strong>Design Build Florida</strong> (GC/Install) based on your selection and get back to you within one business day.
+          Your request was sent. We’ll route it to <strong>STALO Engineering & Consulting</strong> by default for engineering & permit‑ready CDs.
+          If you selected <strong>Design Build Florida (DBF)</strong>, we’ll involve them as an optional GC/Install partner.
         </p>
       </div>
     </div>
