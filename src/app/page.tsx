@@ -495,8 +495,8 @@ export default function Site() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5" />
-                <a className="underline" href="mailto:vinicio.suarez@designbuild-us.com">
-                  vinicio.suarez@designbuild-us.com
+                <a className="underline" href="mailto:vinicio@stalo-us.com">
+                  vinicio@stalo-us.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -654,7 +654,7 @@ function SEO() {
     name: "STALO Engineering & Consulting",
     url: "https://www.designbuild-us.com",
     telephone: "(786) 440-4097",
-    email: "vinicio.suarez@designbuild-us.com",
+    email: "vinicio@stalo-us.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Weston",
