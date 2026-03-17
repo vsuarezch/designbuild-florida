@@ -307,7 +307,7 @@ export default function Site() {
       <section id="services-dbf" className="border-t border-neutral-200 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Design Build Florida — GC & Installation (Optional)
+            Design Build Florida — GC & Installation
           </h2>
           <p className="mt-2 text-neutral-600">
             For projects that need turnkey installation, DBF provides Florida CGC services. Using DBF is not required.
