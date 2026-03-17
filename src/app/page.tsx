@@ -654,7 +654,7 @@ function SEO() {
     name: "STALO Engineering & Consulting",
     url: "https://www.designbuild-us.com",
     telephone: "(786) 440-4097",
-    email: "vinicio@stalo-us.com",
+    email: "vinicio.suarez@designbuild-us.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Weston",
