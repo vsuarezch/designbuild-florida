@@ -85,7 +85,7 @@ const SERVICES_STALO = [
 const SERVICES_DBF = [
   {
     icon: <Hammer className="h-6 w-6" />,
-    title: "General Contracting & Install — DBF (Optional)",
+    title: "General Contracting & Install — DBF",
     points: [
       "Florida CGC services for installation and coordination",
       "Turnkey scheduling, inspections, and site logistics",
@@ -118,7 +118,7 @@ const BADGES = [
   },
   {
     label: "Florida CGC",
-    sub: "Design Build Florida — Certified General Contractor (Optional)",
+    sub: "Design Build Florida — Certified General Contractor",
     icon: <HardHat className="h-5 w-5" />,
   },
   { label: "HVHZ Ready", sub: "Miami‑Dade / Broward", icon: <ShieldIcon /> },
@@ -303,7 +303,7 @@ export default function Site() {
         </div>
       </section>
 
-      {/* SERVICES — DBF (Optional) */}
+      {/* SERVICES — DBF */}
       <section id="services-dbf" className="border-t border-neutral-200 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
@@ -486,7 +486,7 @@ export default function Site() {
             <p className="mt-2 text-neutral-700">
               Share your project type, jurisdiction, target dates, and any reference files (PDF, DWG, CSV/BOM).
               Use the selector to route your request to <strong>STALO (engineering/CDs)</strong> or
-              <strong> DBF (GC/Install – optional)</strong>.
+              <strong> DBF (GC/Install)</strong>.
             </p>
 
             <div className="mt-6 space-y-3 text-neutral-700">
@@ -680,7 +680,7 @@ function SEO() {
       },
       {
         "@type": "LocalBusiness",
-        name: "Design Build Florida (GC/Install — Optional)",
+        name: "Design Build Florida (GC/Install)",
         makesOffer: SERVICES_DBF.map((s) => ({
           "@type": "Service",
           name: s.title,
@@ -693,7 +693,7 @@ function SEO() {
     <>
       <title>
         STALO Engineering & Consulting — Engineering • Permit‑Ready CDs • CFS CNC
-        | Optional GC/Install by Design Build Florida
+        | GC/Install by Design Build Florida
       </title>
       <meta
         name="description"
