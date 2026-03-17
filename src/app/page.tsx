@@ -345,7 +345,7 @@ export default function Site() {
                 Portfolio
               </h2>
               <p className="mt-2 text-neutral-600">
-                Selected photos and drawings (images unchanged).
+                Selected photos and drawings
               </p>
             </div>
             <div className="hidden md:flex items-center gap-2 text-neutral-600">
@@ -495,8 +495,8 @@ export default function Site() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5" />
-                <a className="underline" href="mailto:vinicio@stalo-us.com">
-                  vinicio@stalo-us.com
+                <a className="underline" href="mailto:vinicio.suarez@designbuild-us.com">
+                  vinicio.suarez@designbuild-us.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -571,7 +571,7 @@ export default function Site() {
                         className="w-full h-10 rounded-md border border-neutral-300 bg-white px-3 text-sm"
                       >
                         <option>STALO Engineering & Consulting</option>
-                        <option>Design Build Florida (Optional)</option>
+                        <option>Design Build Florida </option>
                       </select>
                     </div>
                   </div>
