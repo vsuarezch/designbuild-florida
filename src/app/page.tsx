@@ -40,7 +40,7 @@ const STALO_SERVICES = [
     icon: <FileSpreadsheet className="h-5 w-5" />,
     title: "CFS Shop Drawings & CNC",
     points: [
-      "Pinnacle / Howick-ready CNC exports",
+      "FrameCad / Pinnacle / Howick-ready CNC exports",
       "Coil optimization, labeling, and bills of materials",
       "Coordination with factory and field teams",
     ],
