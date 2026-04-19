@@ -4,8 +4,8 @@ import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   Building2, Ruler, FileSpreadsheet, BadgeCheck, Phone, Mail,
-  MapPin, Linkedin, ChevronRight, Images, ClipboardCheck, HardHat,
-  CheckCircle2, Home, Zap, Wrench, Clock, ChevronDown, ArrowRight,
+  MapPin, Linkedin, ChevronRight, ClipboardCheck, HardHat,
+  CheckCircle2, Home, Zap, Clock, ChevronDown, ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -40,7 +40,7 @@ const STALO_SERVICES = [
     icon: <FileSpreadsheet className="h-5 w-5" />,
     title: "CFS Shop Drawings & CNC",
     points: [
-      "FrameCad / Pinnacle / Howick-ready CNC exports",
+      "Pinnacle / Howick-ready CNC exports",
       "Coil optimization, labeling, and bills of materials",
       "Coordination with factory and field teams",
     ],
