@@ -346,16 +346,23 @@ function ContactForm() {
   const [sent, setSent] = useState(false);
   const valid = useMemo(() => form.name.trim() && /.+@.+\..+/.test(form.email) && form.message.trim(), [form]);
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    await fetch("https://formspree.io/f/mdkljnde", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...form, _subject: "New inquiry - designbuild-us" }),
+    });
+    setSent(true);
+  }
+
   return sent ? (
     <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
       <CheckCircle2 className="h-10 w-10 text-emerald-600 mx-auto mb-3" />
-      <p className="font-semibold text-emerald-900">Message received — we will be in touch within 1 business day.</p>
+      <p className="font-semibold text-emerald-900">Message received &mdash; we will be in touch within 1 business day.</p>
     </div>
   ) : (
-    <form action="https://formspree.io/f/mdkljnde" method="POST" className="space-y-4">
-      <input type="hidden" name="_subject" value="New inquiry — designbuild-us" />
-      <input type="hidden" name="_next" value="https://www.designbuild-us.com/thank-you" />
-      <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-3">
         <div>
           <label className="text-xs font-medium text-neutral-600 block mb-1">Name *</label>
@@ -614,7 +621,7 @@ export default function Site() {
           {/* What's included */}
           <FadeIn delay={0.12}>
             <div className="mt-10">
-              <h3 className="text-xl font-bold text-neutral-900 mb-5">What's included in a permit package</h3>
+              <h3 className="text-xl font-bold text-neutral-900 mb-5">What&apos;s included in a permit package</h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {DBF_SERVICES.slice(0, 8).map((s, i) => (
                   <div key={s.id} className="rounded-2xl border border-neutral-200 bg-white p-4 hover:shadow-sm transition-shadow">
@@ -710,7 +717,8 @@ export default function Site() {
               <FadeIn key={i} delay={(i % 3) * 0.06}>
                 <figure className="group rounded-2xl overflow-hidden border border-neutral-200 bg-white hover:shadow-lg transition-shadow">
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img src={p.src} alt={p.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.src} alt={p.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <figcaption className="p-3 text-sm text-neutral-600 font-medium">{p.caption}</figcaption>
                 </figure>
