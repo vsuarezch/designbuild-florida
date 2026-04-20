@@ -4,7 +4,7 @@ import "./globals.css";
 
 // ─── Replace G-XXXXXXXXXX with your real GA4 Measurement ID ───────────────────
 // Get it from: analytics.google.com → Admin → Data Streams → your stream → Measurement ID
-const GA_ID = "G-4RMDV7YLJQ";
+const GA_ID = "G-XXXXXXXXXX";
 
 export const metadata: Metadata = {
   title: {
@@ -38,24 +38,20 @@ export default function RootLayout({
         {children}
 
         {/* Google Analytics 4 — loads after page is interactive, doesn't block render */}
-        {GA_ID !== "G-XXXXXXXXXX" && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
