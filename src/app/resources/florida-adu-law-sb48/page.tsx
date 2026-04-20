@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { ResourceShell } from "../_shell";
 
 export const metadata: Metadata = {
-  title: "Florida ADU Law SB 48 / HB 313 (2026): What It Means for Homeowners | designbuild-us",
+  title: "Florida ADU Legislation: SB 48 & HB 313 Status (2026) | designbuild-us",
   description:
-    "Florida SB 48 requires local governments to allow ADUs by right in single-family zones by December 1, 2026. What the law does, what it doesn't do, and what homeowners should do now.",
+    "SB 48 and HB 313 both died in the Florida legislature on March 13, 2026 — the same fate as the 2025 versions. Here is what the bills proposed, why they keep failing, and what it means for ADU permitting in Florida today.",
   alternates: { canonical: "https://www.designbuild-us.com/resources/florida-adu-law-sb48" },
   openGraph: {
-    title: "Florida ADU Law SB 48 / HB 313 Explained",
-    description: "New law requires ADUs by right statewide by December 2026. What it means for you.",
+    title: "Florida ADU Legislation SB 48 / HB 313: What Actually Happened",
+    description: "Both bills died March 13, 2026. Here is the accurate status and what it means for ADU permitting.",
     url: "https://www.designbuild-us.com/resources/florida-adu-law-sb48",
   },
 };
@@ -19,42 +19,42 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What does Florida SB 48 / HB 313 require?",
+      name: "Did Florida SB 48 / HB 313 pass in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Florida SB 48 / HB 313 requires all local governments to amend their zoning ordinances by December 1, 2026 to allow accessory dwelling units (ADUs) by right in single-family residential zones. This means local governments cannot prohibit or require a special permit or variance for ADUs in these zones — they must be permitted through the standard building permit process.",
+        text: "No. SB 48 died in the Florida House on March 13, 2026. HB 313 died with it. The 2026 session ended without passage — the same outcome as the 2025 versions of the bills. As of the end of the 2026 legislative session, Florida has no statewide ADU-by-right mandate.",
       },
     },
     {
       "@type": "Question",
-      name: "What does ADU by right mean?",
+      name: "What did Florida SB 48 / HB 313 propose?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ADU by right means that if a proposed ADU meets the applicable zoning standards (setbacks, size limits, height), the local government must approve it without requiring a special use permit, variance, conditional use permit, or public hearing. It eliminates the discretionary approval layer that previously allowed cities and counties to deny ADU applications on a case-by-case basis.",
+        text: "The bills would have required all Florida local governments to allow ADUs by right in single-family residential zones — meaning homeowners whose proposed ADU meets applicable zoning standards (setbacks, size, height) could not be denied through discretionary approval processes. The bills did not propose eliminating the building permit requirement.",
       },
     },
     {
       "@type": "Question",
-      name: "Does SB 48 mean I no longer need a building permit for an ADU?",
+      name: "Does ADU permitting in Florida still require a construction document package?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. SB 48 removes the zoning barrier — the discretionary approval that many local governments previously required before a homeowner could even apply for a building permit. The building permit itself is still required. A complete site-specific construction document package must still be submitted to the local building department.",
+        text: "Yes. Every ADU and guesthouse installation in Florida requires a complete site-specific construction document package submitted to the local building department. This includes a site plan, foundation plan, elevations, energy performance calculations, and MEP documents, all signed and sealed by a Florida licensed Professional Engineer.",
       },
     },
     {
       "@type": "Question",
-      name: "When does SB 48 take effect?",
+      name: "Can I still permit an ADU in Florida without SB 48 passing?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Local governments have until December 1, 2026 to amend their zoning ordinances to comply with SB 48. Some jurisdictions may amend earlier. Homeowners in jurisdictions that already allow ADUs by right are not affected by the deadline.",
+        text: "Yes. Many Florida counties and municipalities already allow ADUs under their existing zoning codes. The permitting process is the same regardless of whether a statewide ADU-by-right mandate exists. The legislation addresses zoning approval, not the building permit package requirement.",
       },
     },
     {
       "@type": "Question",
-      name: "Does SB 48 apply to my city or county?",
+      name: "Will Florida pass ADU legislation in a future session?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "SB 48 applies to all Florida local governments that have not already adopted zoning ordinances allowing ADUs by right in single-family residential zones. Many Florida counties and cities already allow ADUs with varying requirements. Contact your local planning or zoning department to confirm current rules and the status of any pending ordinance amendments.",
+        text: "The push has now failed in both the 2025 and 2026 sessions. Similar bills are expected to be reintroduced. Local governments can and do adopt ADU-friendly zoning independently of state legislation.",
       },
     },
   ],
@@ -70,137 +70,130 @@ export default function FloridaADULawSB48() {
 
       <p className="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-3">Resources</p>
 
-      {/* Legislative callout */}
-      <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
-        <strong>Legislative update:</strong> Florida SB 48 / HB 313 requires local governments to allow
-        ADUs by right in single-family zones. Deadline for local compliance: <strong>December 1, 2026</strong>.
+      {/* Accurate status callout */}
+      <div className="mb-6 rounded-xl border border-neutral-300 bg-neutral-100 px-5 py-4 text-sm text-neutral-800">
+        <strong>Legislative status:</strong> SB 48 died in the Florida House on March 13, 2026.
+        HB 313 died with it. The 2026 session ended without passage —
+        the same outcome as the 2025 versions of the bills.
       </div>
 
       <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-900 leading-tight">
-        Florida&apos;s New ADU Law: SB 48 / HB 313 Explained
+        Florida ADU Legislation: SB 48 &amp; HB 313 — What Actually Happened
       </h1>
-      <p className="mt-4 text-neutral-500 text-sm">Florida Legislature · Effective December 1, 2026</p>
+      <p className="mt-4 text-neutral-500 text-sm">
+        Updated April 2026 &middot; 2026 Florida Legislative Session
+      </p>
 
       <div className="mt-10 prose prose-neutral max-w-none">
 
-        <h2>What the Law Does</h2>
+        <h2>The Bills Failed — Again</h2>
         <p>
-          Florida SB 48 / HB 313 is part of the state&apos;s broader affordable housing strategy. The law
-          requires all Florida local governments to amend their zoning ordinances by <strong>December 1, 2026</strong> to
-          allow accessory dwelling units (ADUs) <strong>by right</strong> in single-family residential zones.
+          SB 48 and HB 313 — Florida&apos;s 2026 ADU-by-right bills — died in the legislature
+          on March 13, 2026. This follows the same outcome in the 2025 session, when companion
+          bills also failed to pass. Florida enters the post-session period without a statewide
+          mandate requiring local governments to allow ADUs by right in single-family zones.
         </p>
         <p>
-          Before this law, many Florida cities and counties either prohibited ADUs outright or required
-          homeowners to obtain a special use permit, conditional use approval, or variance — a discretionary
-          process that could result in denial even when the ADU met all zoning standards. SB 48 removes
-          that discretionary layer.
-        </p>
-
-        <h2>What &ldquo;By Right&rdquo; Means</h2>
-        <p>
-          ADU &ldquo;by right&rdquo; means that if a proposed ADU meets the applicable development
-          standards — setbacks, size limits, height, parking — the local government must approve it.
-          No special permit. No public hearing. No neighbor notice period. No city council vote.
-        </p>
-        <p>
-          The ADU goes through the standard building permit process, the same as any other residential
-          addition or improvement. The local government reviews the construction documents for code
-          compliance, issues the permit, and conducts inspections. That&apos;s it.
-        </p>
-        <p>
-          This is a significant change for jurisdictions that previously made ADU approval difficult
-          or unpredictable.
+          If you have been tracking this legislation as a manufacturer, installer, or developer,
+          the result is not surprising — but it matters for how you plan.
         </p>
 
-        <h2>What the Law Does Not Change</h2>
+        <h2>What the Bills Proposed</h2>
         <p>
-          SB 48 removes the zoning barrier. It does not remove the building permit requirement.
+          Both the 2025 and 2026 versions proposed requiring Florida local governments to allow
+          ADUs <strong>by right</strong> in single-family residential zones. &ldquo;By right&rdquo;
+          means a proposed ADU meeting applicable development standards — setbacks, size, height —
+          could not be denied through a discretionary process such as a special use permit,
+          conditional use hearing, or variance.
         </p>
         <p>
-          A complete site-specific construction document package is still required for every ADU
-          installation. The local building department still reviews those documents for Florida Building
-          Code compliance. Inspections are still required. The engineering, energy calculations, foundation
-          plans, and MEP documents that make up a permit package are all still necessary.
-        </p>
-        <p>
-          The law makes it easier to <em>qualify</em> for a permit. It does not make the permit package
-          go away.
+          The bills addressed the zoning barrier, not the building permit requirement. Even if
+          the legislation had passed, every ADU installation would still have required a complete
+          site-specific construction document package submitted to the local building department.
         </p>
 
-        <h2>What Changes on December 1, 2026</h2>
+        <h2>What It Means for ADU Permitting Today</h2>
         <p>
-          Cities and counties that currently prohibit ADUs or require discretionary approval will be
-          required to allow them by right once their ordinances are amended. Practically, this means:
+          The failure of SB 48 and HB 313 does not change the permitting process — it leaves
+          the zoning landscape unchanged in jurisdictions that currently restrict ADUs.
+        </p>
+        <p>
+          In Florida counties and municipalities that already allow ADUs under existing zoning,
+          the process proceeds exactly as before: commission a survey, prepare the construction
+          document package, submit to the local building department, respond to review comments,
+          receive the permit.
+        </p>
+        <p>
+          In jurisdictions that restrict or prohibit ADUs, homeowners remain subject to local
+          discretionary approval processes. A variance or special use permit may be required
+          before a building permit application is even accepted.
+        </p>
+
+        <h2>The Broader Legislative Picture</h2>
+        <p>
+          Two failed sessions does not mean the push is finished. ADU reform has support from
+          housing advocacy organizations, homebuilders, and manufacturers who view statewide
+          by-right approval as a meaningful tool for addressing Florida&apos;s housing shortage.
+          Companion bills are expected to be reintroduced in the 2027 session.
+        </p>
+        <p>
+          Some Florida local governments are adopting ADU-friendly zoning independently —
+          either in anticipation of eventual state legislation or in response to local housing
+          pressure. Checking current zoning rules for a specific parcel remains the most
+          reliable first step for any ADU project.
+        </p>
+
+        <h2>What Stays True Regardless of Legislation</h2>
+        <p>
+          Whether or not Florida passes an ADU-by-right mandate, every ADU and guesthouse
+          installation requires the same construction document package for a local building permit:
         </p>
         <ul>
-          <li>Homeowners in currently restrictive jurisdictions will be able to apply for ADU building
-          permits for the first time, or without the risk of discretionary denial.</li>
-          <li>The volume of ADU permit applications across Florida will increase significantly.</li>
-          <li>Building departments in jurisdictions with new ADU permissions will see increased workload,
-          potentially lengthening review times.</li>
-          <li>Demand for professional permitting services — site plans, foundation plans, energy
-          calculations — will increase proportionally.</li>
+          <li>Topographic survey (by a licensed Florida surveyor)</li>
+          <li>Site plan — coordinating survey, ADU footprint, existing structures, zoning, drainage</li>
+          <li>Foundation plan — engineered for site-specific soil and wind conditions</li>
+          <li>Elevations — flood elevation and zoning compliance</li>
+          <li>Energy performance calculations — R405 for location and orientation</li>
+          <li>MEP documents — electrical, plumbing, and HVAC connections</li>
         </ul>
-
-        <h2>What Homeowners Should Do Now</h2>
         <p>
-          If you are considering an ADU and your jurisdiction currently restricts them, the time to
-          plan is now — not after December 2026 when permit departments are likely to be backlogged
-          with new applications.
+          This is the permitting gap that exists independent of any legislation — and it is
+          what Design Build Florida produces, in two weeks, for any construction system.
         </p>
-        <p>
-          Specifically:
-        </p>
-        <ul>
-          <li>
-            <strong>Check your current zoning.</strong> Contact your local planning department or
-            check the county property appraiser website to confirm current ADU rules for your parcel.
-            Some jurisdictions already allow ADUs by right and you may be able to proceed immediately.
-          </li>
-          <li>
-            <strong>Commission a topographic survey.</strong> Surveyors are a bottleneck in the
-            process. Starting the survey early keeps the overall timeline as short as possible.
-          </li>
-          <li>
-            <strong>Engage your permit package team early.</strong> Construction document preparation
-            takes 2 weeks from Notice to Proceed, but scheduling that work in advance keeps your
-            project moving without gaps.
-          </li>
-        </ul>
 
         <h2>Frequently Asked Questions</h2>
 
-        <h3>What does Florida SB 48 / HB 313 require?</h3>
+        <h3>Did Florida SB 48 / HB 313 pass in 2026?</h3>
         <p>
-          All local governments must amend their zoning ordinances by December 1, 2026 to allow ADUs
-          by right in single-family residential zones. They cannot require a special permit, variance,
-          or conditional use approval for ADUs that meet applicable development standards.
+          No. Both bills died on March 13, 2026. The 2026 session ended without passage,
+          matching the outcome of the 2025 session.
         </p>
 
-        <h3>What does ADU by right mean?</h3>
+        <h3>What did the bills propose?</h3>
         <p>
-          It means if your ADU meets the setback, size, and height standards, the local government
-          must approve it through the standard building permit process — no discretionary approval,
-          public hearing, or neighbor notice required.
+          They would have required local governments to allow ADUs by right in single-family
+          zones — removing discretionary zoning approval. They did not propose eliminating
+          the building permit requirement.
         </p>
 
-        <h3>Does SB 48 mean I no longer need a building permit?</h3>
+        <h3>Can I still permit an ADU in Florida?</h3>
         <p>
-          No. The building permit is still required. SB 48 removes the zoning barrier, not the
-          building permit requirement. A site-specific construction document package is still needed.
+          Yes. Many Florida jurisdictions already allow ADUs under existing zoning. The
+          construction document package and local building permit process is the same
+          regardless of the legislative outcome.
         </p>
 
-        <h3>When does SB 48 take effect?</h3>
+        <h3>Will Florida pass ADU legislation in the future?</h3>
         <p>
-          Local governments must comply by December 1, 2026. Some jurisdictions may amend their
-          ordinances earlier.
+          The issue has failed in two consecutive sessions. Similar bills are expected in 2027.
+          Local governments can adopt ADU-friendly zoning independently of state action.
         </p>
 
-        <h3>Does it apply to my city?</h3>
+        <h3>Does the permitting process change without SB 48?</h3>
         <p>
-          SB 48 applies to all Florida local governments that don&apos;t already allow ADUs by right.
-          Many already do. Check with your local planning department to confirm the current rules
-          and any pending amendments.
+          No. The construction document package requirement — site plan, foundation plan,
+          elevations, energy calculations, MEP — exists under the Florida Building Code
+          and is not affected by the ADU zoning legislation.
         </p>
       </div>
     </ResourceShell>

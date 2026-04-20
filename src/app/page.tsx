@@ -576,18 +576,18 @@ export default function Site() {
           </FadeIn>
 
 
-          {/* SB 48 Legislative callout */}
+          {/* SB 48 Legislative update */}
           <FadeIn delay={0.06}>
-            <a href="/resources/florida-adu-law-sb48" className="mt-6 flex items-start gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-4 hover:bg-blue-100 transition-colors group max-w-3xl">
-              <div className="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
-                <BadgeCheck className="h-4 w-4 text-blue-700" />
+            <a href="/resources/florida-adu-law-sb48" className="mt-6 flex items-start gap-4 rounded-2xl border border-neutral-200 bg-neutral-100 p-4 hover:bg-neutral-200 transition-colors group max-w-3xl">
+              <div className="h-8 w-8 rounded-lg bg-neutral-200 flex items-center justify-center shrink-0 mt-0.5">
+                <BadgeCheck className="h-4 w-4 text-neutral-600" />
               </div>
               <div>
-                <p className="font-semibold text-blue-900 text-sm">Florida SB 48 / HB 313 &mdash; Deadline: December 1, 2026</p>
-                <p className="text-blue-800 text-sm mt-0.5 leading-relaxed">
-                  Local governments must allow ADUs <em>by right</em> in single-family zones statewide.
-                  The window to plan and permit is now.{" "}
-                  <span className="underline group-hover:no-underline font-medium">Learn more &rarr;</span>
+                <p className="font-semibold text-neutral-800 text-sm">Florida ADU Legislation — SB 48 &amp; HB 313</p>
+                <p className="text-neutral-600 text-sm mt-0.5 leading-relaxed">
+                  Both bills died in the 2026 session. ADU permitting continues under existing local zoning rules.
+                  The construction document package requirement is unchanged.{" "}
+                  <span className="underline group-hover:no-underline font-medium">Full update &rarr;</span>
                 </p>
               </div>
             </a>
