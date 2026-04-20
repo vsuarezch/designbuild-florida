@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {
   Building2, Ruler, FileSpreadsheet, BadgeCheck, Phone, Mail,
   MapPin, Linkedin, ChevronRight, ClipboardCheck, HardHat,
-  CheckCircle2, Home, Zap, Clock, ChevronDown, ArrowRight,
+  CheckCircle2, Home, Zap, Clock, ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -144,8 +144,22 @@ function ADUQuoteForm() {
     if (step1Valid) setStep(2);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const services = allServices
+      ? ["Full package - not sure what applies"]
+      : Object.entries(selected).filter(([, v]) => v).map(([k]) =>
+          DBF_SERVICES.find(s => s.id === k)?.label ?? k
+        );
+    await fetch("https://formspree.io/f/mdkljnde", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        _subject: "New ADU Permit Quote Request",
+        ...contact,
+        services,
+      }),
+    });
     setSubmitted(true);
   }
 
@@ -271,71 +285,6 @@ function ADUQuoteForm() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   RESOURCE ACCORDION
-───────────────────────────────────────────── */
-
-const RESOURCES = [
-  {
-    q: "What is a Modular Home?",
-    a: `A modular home is a factory-built structure constructed in sections at an off-site facility and transported to the property for permanent foundation assembly. Built under controlled conditions, modular construction improves quality control and reduces weather-related delays.
-
-In Florida, modular buildings require DBPR approval before installation — certifying the unit meets the Florida Building Code. However, that approval does not replace local permitting. Every installation still requires a site-specific construction document package submitted to the local Authority Having Jurisdiction (AHJ).
-
-Key characteristics: built to the Florida Building Code · placed on a permanent foundation · classified as real property · eligible for conventional financing · appreciates in value like a site-built home.`,
-  },
-  {
-    q: "Modular vs. Manufactured — What is the Difference?",
-    a: `Manufactured homes are built on a permanent steel chassis and governed by the federal HUD Code. They are typically classified as personal property with more limited financing options.
-
-Modular homes are assembled on a permanent foundation and governed by the Florida Building Code. They are classified as real property, eligible for conventional mortgage financing, and treated identically to site-built homes for insurance and resale.
-
-In short: if it is on a chassis and follows HUD rules, it is manufactured. If it is on a foundation and follows the FBC, it is modular.`,
-  },
-  {
-    q: "What is an ADU (Accessory Dwelling Unit)?",
-    a: `An ADU is a secondary residential unit on the same property as a primary single-family home — detached, attached, or converted from existing space (garage, bonus room, etc.). Florida is actively expanding ADU adoption as part of its affordable housing strategy.
-
-State pre-approval for modular ADU units simplifies part of the process, but a complete site-specific construction document package is still required before any local building department will issue a permit. That package includes a topographic survey, site plan, foundation plan, elevations, energy calculations, and MEP documents.
-
-This is exactly what Design Build Florida produces.`,
-  },
-  {
-    q: "What is the ADU Permitting Process in Florida?",
-    a: `1. Select a Florida DBPR-approved ADU unit from a manufacturer.
-2. Commission a topographic survey of your property (by a licensed surveyor).
-3. Engage Design Build Florida to produce the site-specific construction document package (site plan, foundation plan, elevations, energy calcs, MEP).
-4. Submit the complete package — including the manufacturer's FL approval — to your local building department.
-5. Respond to any AHJ review comments (up to two cycles included in our standard package).
-6. Receive your building permit and proceed with installation.
-
-Standard document production: 2 weeks from Notice to Proceed.`,
-  },
-];
-
-function ResourceAccordion() {
-  const [open, setOpen] = useState<number | null>(null);
-  return (
-    <div className="space-y-3">
-      {RESOURCES.map((r, i) => (
-        <div key={i} className="rounded-2xl border border-neutral-200 overflow-hidden">
-          <button
-            className="w-full flex items-center justify-between px-6 py-4 text-left text-sm font-semibold text-neutral-900 hover:bg-neutral-50 transition-colors"
-            onClick={() => setOpen(open === i ? null : i)}
-          >
-            {r.q}
-            <ChevronDown className={`h-4 w-4 text-neutral-400 transition-transform ${open === i ? "rotate-180" : ""}`} />
-          </button>
-          {open === i && (
-            <div className="px-6 pb-5 text-sm text-neutral-700 whitespace-pre-line leading-relaxed border-t border-neutral-100 pt-4">
-              {r.a}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────
    CONTACT FORM
@@ -403,7 +352,7 @@ function ContactForm() {
 ───────────────────────────────────────────── */
 
 function SEO() {
-  const jsonLd = {
+  const orgSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "designbuild-us",
@@ -411,18 +360,44 @@ function SEO() {
     telephone: "(786) 440-4097",
     email: "info@designbuild-us.com",
     address: { "@type": "PostalAddress", addressLocality: "Weston", addressRegion: "FL", addressCountry: "US" },
-    areaServed: "Florida",
+    areaServed: [
+      { "@type": "State", name: "Florida" },
+      { "@type": "County", name: "Miami-Dade County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Broward County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Palm Beach County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Orange County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Hillsborough County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Pinellas County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Sarasota County", containedInPlace: { "@type": "State", name: "Florida" } },
+      { "@type": "County", name: "Lee County", containedInPlace: { "@type": "State", name: "Florida" } },
+    ],
     department: [
       { "@type": "LocalBusiness", name: "STALO Engineering & Consulting", description: "Structural engineering and permit-ready construction documents across Florida." },
-      { "@type": "LocalBusiness", name: "Design Build Florida", description: "ADU construction documents and permitting in Florida." },
+      { "@type": "LocalBusiness", name: "Design Build Florida", description: "ADU and guesthouse construction documents and permitting in Florida." },
     ],
   };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { "@type": "Question", name: "What documents are required for an ADU permit in Florida?", acceptedAnswer: { "@type": "Answer", text: "A complete ADU permit package includes a topographic survey, site plan, foundation plan with structural calculations, elevations, energy performance calculations (R405), and MEP documents (electrical, plumbing, HVAC). All plans must be signed and sealed by a Florida licensed Professional Engineer." } },
+      { "@type": "Question", name: "Do I need a permit for a guesthouse in Florida?", acceptedAnswer: { "@type": "Answer", text: "Yes. Any habitable accessory structure requires a building permit regardless of what it is called. The permit requires a complete site-specific construction document package submitted to the local building department." } },
+      { "@type": "Question", name: "What is Florida SB 48 and how does it affect ADUs?", acceptedAnswer: { "@type": "Answer", text: "Florida SB 48 / HB 313 requires local governments to allow ADUs by right in single-family zones by December 1, 2026. This removes the discretionary zoning approval barrier but does not eliminate the building permit requirement. A site-specific construction document package is still required for every ADU installation." } },
+      { "@type": "Question", name: "How long does ADU permitting take in Florida?", acceptedAnswer: { "@type": "Answer", text: "Construction document preparation takes 2 weeks from Notice to Proceed. Local building department review adds 2 to 10 weeks depending on the county. Total realistic timeline is 6 to 16 weeks from project start to permit in hand." } },
+      { "@type": "Question", name: "Can I legalize an unpermitted ADU or guesthouse in Florida?", acceptedAnswer: { "@type": "Answer", text: "Yes, through as-built permitting. The process involves documenting the existing structure, preparing engineering drawings, submitting to the local Authority Having Jurisdiction, and passing inspections. If the structure has code deficiencies, corrections will be required before the permit can be closed." } },
+    ],
+  };
+
+  const jsonLd = [orgSchema, faqSchema];
   return (
     <>
       <title>designbuild-us — Structural Engineering & ADU Permitting | Florida</title>
       <meta name="description" content="designbuild-us coordinates STALO Engineering (structural engineering, permit-ready CDs, CFS) and Design Build Florida (ADU permitting and construction documents) across Florida." />
       <link rel="canonical" href="https://www.designbuild-us.com" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {jsonLd.map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
     </>
   );
 }
@@ -600,6 +575,24 @@ export default function Site() {
             </div>
           </FadeIn>
 
+
+          {/* SB 48 Legislative callout */}
+          <FadeIn delay={0.06}>
+            <a href="/resources/florida-adu-law-sb48" className="mt-6 flex items-start gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-4 hover:bg-blue-100 transition-colors group max-w-3xl">
+              <div className="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                <BadgeCheck className="h-4 w-4 text-blue-700" />
+              </div>
+              <div>
+                <p className="font-semibold text-blue-900 text-sm">Florida SB 48 / HB 313 &mdash; Deadline: December 1, 2026</p>
+                <p className="text-blue-800 text-sm mt-0.5 leading-relaxed">
+                  Local governments must allow ADUs <em>by right</em> in single-family zones statewide.
+                  The window to plan and permit is now.{" "}
+                  <span className="underline group-hover:no-underline font-medium">Learn more &rarr;</span>
+                </p>
+              </div>
+            </a>
+          </FadeIn>
+
           {/* Permitting gap callout */}
           <FadeIn delay={0.08}>
             <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 flex gap-4 items-start max-w-3xl">
@@ -739,13 +732,25 @@ export default function Site() {
               What does ADU permitting actually involve?
             </p>
           </FadeIn>
-          <div className="mt-10 max-w-3xl">
-            <FadeIn delay={0.08}>
-              <ResourceAccordion />
-            </FadeIn>
+          <div className="mt-10 grid sm:grid-cols-2 gap-4 max-w-4xl">
+            {[
+              { title: "ADU Permitting in Florida", href: "/resources/adu-permitting-florida", desc: "Required documents, timeline, and how to navigate the local building department process." },
+              { title: "Unpermitted ADU: How to Legalize It", href: "/resources/unpermitted-adu-florida", desc: "Risks of skipping the permit and how the as-built process works." },
+              { title: "Florida ADU Law SB 48 / HB 313", href: "/resources/florida-adu-law-sb48", desc: "New legislation requires ADUs by right statewide by December 2026." },
+              { title: "Modular vs. Manufactured Home", href: "/resources/modular-vs-manufactured-home", desc: "Two distinct legal categories — very different implications for financing and permitting." },
+              { title: "Guesthouse Permit in Florida", href: "/resources/guesthouse-permit-florida", desc: "Do you need a permit? Requirements, county variations, and as-built options." },
+            ].map((r, i) => (
+              <FadeIn key={r.href} delay={i * 0.05}>
+                <a href={r.href} className="block rounded-2xl border border-neutral-200 bg-white p-5 hover:border-neutral-400 hover:shadow-sm transition-all group">
+                  <p className="font-semibold text-neutral-900 group-hover:underline">{r.title}</p>
+                  <p className="text-sm text-neutral-500 mt-1 leading-relaxed">{r.desc}</p>
+                  <p className="text-sm font-semibold text-neutral-900 mt-3">Read &rarr;</p>
+                </a>
+              </FadeIn>
+            ))}
           </div>
-          <FadeIn delay={0.14}>
-            <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <FadeIn delay={0.3}>
+            <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 max-w-4xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <p className="font-bold text-neutral-900">Ready to start your permit package?</p>
                 <p className="text-sm text-neutral-600 mt-0.5">Two steps. No payment required at this stage.</p>
@@ -844,10 +849,11 @@ export default function Site() {
           <div>
             <p className="font-semibold text-neutral-300 mb-3">Resources</p>
             <ul className="space-y-1.5 text-neutral-400">
-              <li><a href="#resources" className="hover:text-white transition-colors">What is a Modular Home?</a></li>
-              <li><a href="#resources" className="hover:text-white transition-colors">Modular vs. Manufactured</a></li>
-              <li><a href="#resources" className="hover:text-white transition-colors">What is an ADU?</a></li>
-              <li><a href="#resources" className="hover:text-white transition-colors">ADU Permitting Process</a></li>
+              <li><a href="/resources/adu-permitting-florida" className="hover:text-white transition-colors">ADU Permitting in Florida</a></li>
+              <li><a href="/resources/unpermitted-adu-florida" className="hover:text-white transition-colors">Unpermitted ADU: Legalize It</a></li>
+              <li><a href="/resources/florida-adu-law-sb48" className="hover:text-white transition-colors">Florida ADU Law SB 48</a></li>
+              <li><a href="/resources/modular-vs-manufactured-home" className="hover:text-white transition-colors">Modular vs. Manufactured</a></li>
+              <li><a href="/resources/guesthouse-permit-florida" className="hover:text-white transition-colors">Guesthouse Permits</a></li>
             </ul>
           </div>
         </div>
