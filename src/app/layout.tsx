@@ -4,7 +4,7 @@ import "./globals.css";
 
 // ─── Replace G-XXXXXXXXXX with your real GA4 Measurement ID ───────────────────
 // Get it from: analytics.google.com → Admin → Data Streams → your stream → Measurement ID
-const GA_ID = "G-XXXXXXXXXX";
+const GA_ID = "G-4RMDV7YLJQ";
 
 export const metadata: Metadata = {
   title: {
