@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { track } from "@/lib/analytics";
 
 export function SiteFooter() {
@@ -16,9 +17,9 @@ export function SiteFooter() {
           <p className="text-neutral-400 leading-relaxed">
             Engineering and permit support for Florida architects, builders, and industrialized construction manufacturers.
           </p>
-          <a href="/" className="inline-block mt-4 text-neutral-400 hover:text-white text-xs transition-colors">
+          <Link href="/" className="inline-block mt-4 text-neutral-400 hover:text-white text-xs transition-colors">
             ← Back to main site
-          </a>
+          </Link>
         </div>
         <div>
           <p className="font-semibold text-neutral-300 mb-3">STALO Engineering &amp; Consulting</p>
