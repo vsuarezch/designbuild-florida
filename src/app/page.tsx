@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { track } from "@/lib/analytics";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -21,8 +22,8 @@ const STALO_SERVICES = [
     icon: <Ruler className="h-5 w-5" />,
     title: "Structural Engineering",
     points: [
-      "Cold-formed steel (CFS), structural steel, CMU & reinforced concrete",
-      "FBC 2023 / ASCE 7-22 / ACI 318 / AISC 360 / AISI S100–S240",
+      "Cold-formed steel (CFS), structural steel, wood, CMU & reinforced concrete",
+      "FBC 2023 / ASCE 7-22 / ACI 318 / AISC 360 / AISI S100–S240 / NDS",
       "Signed & sealed calculations, reports, and engineering letters",
     ],
   },
@@ -160,6 +161,7 @@ function ADUQuoteForm() {
         services,
       }),
     });
+    track("adu_form_submit");
     setSubmitted(true);
   }
 
@@ -302,6 +304,7 @@ function ContactForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, _subject: "New inquiry - designbuild-us" }),
     });
+    track("contact_form_submit");
     setSent(true);
   }
 
@@ -443,40 +446,44 @@ export default function Site() {
         <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <FadeIn>
             <div className="inline-block text-xs font-semibold tracking-widest uppercase text-neutral-400 mb-6 border border-neutral-700 rounded-full px-4 py-1.5">
-              Florida · Distributed · Licensed
+              Florida Structural Engineering · Permit Support · Distributed Statewide
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl">
-              A distributed network of design professionals —{" "}
-              <span className="text-neutral-400">one platform, every step.</span>
+              Engineering support for Florida architects, builders, and Industrialized Construction Manufacturers.
             </h1>
           </FadeIn>
           <FadeIn delay={0.16}>
             <p className="mt-6 text-neutral-300 text-lg max-w-2xl leading-relaxed">
-              designbuild-us coordinates two independent licensed firms across Florida.
-              Whether your project needs structural engineering and sealed construction
-              documents, or a complete ADU permitting package, you reach the right
-              team through a single platform.
+              STALO Engineering &amp; Consulting provides signed and sealed structural plans,
+              calculations, permit responses, and construction support across Florida.
+              Design Build Florida supports ADU permit packages, manufacturer
+              partnerships, and GC/install partner workflows.
+            </p>
+            <p className="mt-3 text-neutral-400 text-base max-w-2xl leading-relaxed">
+              We work remotely, efficiently, and statewide — no centralized office overhead,
+              just licensed professionals focused on permit-ready deliverables.
             </p>
           </FadeIn>
           <FadeIn delay={0.22}>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" variant="secondary" className="rounded-xl font-semibold">
-                <a href="#stalo">STALO Engineering <ChevronRight className="ml-1 h-4 w-4" /></a>
+                <a href="#stalo" onClick={() => track("engineering_quote_click")}>Request an Engineering Quote <ChevronRight className="ml-1 h-4 w-4" /></a>
               </Button>
               <Button asChild size="lg" className="rounded-xl font-semibold bg-white text-neutral-900 hover:bg-neutral-100">
-                <a href="#dbf">Design Build Florida <ChevronRight className="ml-1 h-4 w-4" /></a>
+                <a href="#dbf" onClick={() => track("permit_comments_click")}>Send Permit Comments / Plans <ChevronRight className="ml-1 h-4 w-4" /></a>
               </Button>
             </div>
           </FadeIn>
           <FadeIn delay={0.28}>
             <div className="mt-10 flex flex-wrap gap-4 text-sm text-neutral-400">
               {[
-                { icon: <BadgeCheck className="h-4 w-4" />, label: "Florida PE — STALO Engineering" },
-                { icon: <HardHat className="h-4 w-4" />, label: "Florida CGC — Design Build Florida" },
-                { icon: <ShieldIcon />, label: "HVHZ Ready — Miami-Dade / Broward" },
-                { icon: <Building2 className="h-4 w-4" />, label: "FL Modular Building Program" },
+                { icon: <BadgeCheck className="h-4 w-4" />, label: "Florida PE / COA No. 35044" },
+                { icon: <HardHat className="h-4 w-4" />, label: "Florida CGC" },
+                { icon: <ShieldIcon />, label: "HVHZ Ready" },
+                { icon: <FileSpreadsheet className="h-4 w-4" />, label: "FBC 2023 / ASCE 7-22" },
+                { icon: <MapPin className="h-4 w-4" />, label: "Statewide Distributed Support" },
               ].map(b => (
                 <div key={b.label} className="flex items-center gap-2 bg-neutral-800 rounded-full px-3 py-1.5">
                   {b.icon}<span>{b.label}</span>
@@ -484,6 +491,110 @@ export default function Site() {
               ))}
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ── WHO WE SUPPORT ── */}
+      <section className="border-t border-neutral-200 bg-neutral-50">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <FadeIn>
+            <p className="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Support</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-900 max-w-2xl">
+              Engineering and permit support built around how you work.
+            </h2>
+          </FadeIn>
+
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <FadeIn delay={0.08}>
+              <Card className="rounded-2xl border-neutral-200 h-full hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="h-10 w-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 mb-3">
+                    <Ruler className="h-5 w-5" />
+                  </div>
+                  <CardTitle className="text-base leading-snug">Architects</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0 flex flex-col gap-4">
+                  <p className="text-sm font-semibold text-neutral-800">Engineering behind your architectural set.</p>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    We support architects with structural engineering, residential MEP design, energy calculations,
+                    permit responses, and construction-phase engineering for additions, renovations, townhomes,
+                    ADUs, and light commercial projects. You keep the client relationship; we provide the
+                    engineering support.
+                  </p>
+                  <Button asChild variant="outline" size="sm" className="rounded-xl self-start mt-auto">
+                    <a href="/engineering-for-architects-florida">Engineering for Architects <ChevronRight className="ml-1 h-4 w-4" /></a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </FadeIn>
+
+            <FadeIn delay={0.14}>
+              <Card className="rounded-2xl border-neutral-200 h-full hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="h-10 w-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 mb-3">
+                    <HardHat className="h-5 w-5" />
+                  </div>
+                  <CardTitle className="text-base leading-snug">GCs &amp; Remodelers</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0 flex flex-col gap-4">
+                  <p className="text-sm font-semibold text-neutral-800">Engineering when the building department asks for it.</p>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    We help contractors with signed and sealed engineering documents for load-bearing wall removals,
+                    beams, headers, foundations, garage conversions, additions, roof framing repairs, ADUs, and
+                    permit corrections.
+                  </p>
+                  <Button asChild variant="outline" size="sm" className="rounded-xl self-start mt-auto">
+                    <a href="/structural-engineering-for-contractors-florida">Engineering for Contractors <ChevronRight className="ml-1 h-4 w-4" /></a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </FadeIn>
+
+            <FadeIn delay={0.20}>
+              <Card className="rounded-2xl border-neutral-200 h-full hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="h-10 w-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 mb-3">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+                  <CardTitle className="text-base leading-snug">Industrialized &amp; Modular Manufacturers</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0 flex flex-col gap-4">
+                  <p className="text-sm font-semibold text-neutral-800">Florida approval support for modular and panelized systems.</p>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    We support manufacturers with modular building design for Florida industrialized building
+                    approval, signed and sealed construction documents, quality manuals, installation manuals,
+                    third-party agency coordination, site-specific permit documents, foundations, energy
+                    calculations, and panelized CFS building design.
+                  </p>
+                  <Button asChild variant="outline" size="sm" className="rounded-xl self-start mt-auto">
+                    <a href="/industrialized-modular-building-engineering-florida">Manufacturer Engineering Support <ChevronRight className="ml-1 h-4 w-4" /></a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </FadeIn>
+
+            <FadeIn delay={0.26}>
+              <Card className="rounded-2xl border-neutral-200 h-full hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="h-10 w-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 mb-3">
+                    <Home className="h-5 w-5" />
+                  </div>
+                  <CardTitle className="text-base leading-snug">ADU Developers &amp; Installers</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0 flex flex-col gap-4">
+                  <p className="text-sm font-semibold text-neutral-800">Permit packages that help sell and install ADUs.</p>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    We prepare site-specific documents needed to turn a pre-approved ADU or modular unit into a
+                    local building permit package, including foundation, site coordination, energy calculations,
+                    MEP support, and permit responses.
+                  </p>
+                  <Button asChild variant="outline" size="sm" className="rounded-xl self-start mt-auto">
+                    <a href="#contact">ADU Permit Support <ChevronRight className="ml-1 h-4 w-4" /></a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -546,7 +657,7 @@ export default function Site() {
           <FadeIn delay={0.32}>
             <div className="mt-8">
               <Button asChild className="rounded-xl">
-                <a href="#contact" onClick={() => {}}>Request an Engineering Quote</a>
+                <a href="#contact" onClick={() => track("engineering_quote_click")}>Request an Engineering Quote</a>
               </Button>
             </div>
           </FadeIn>
@@ -660,7 +771,7 @@ export default function Site() {
                       and construction documents for units by SteelCorp USA, Mesocore, and Plad.
                       A professional permitting partner in your sales process keeps deals moving.
                     </p>
-                    <a href="#contact" className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-neutral-900 hover:underline">
+                    <a href="#contact" onClick={() => track("manufacturer_partner_click")} className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-neutral-900 hover:underline">
                       Discuss a partnership <ChevronRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -674,7 +785,7 @@ export default function Site() {
                       We handle the construction document package; you handle the build.
                       Consistent turnaround. Statewide coverage.
                     </p>
-                    <a href="#contact" className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-neutral-900 hover:underline">
+                    <a href="#contact" onClick={() => track("referral_partner_click")} className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-neutral-900 hover:underline">
                       Become a referral partner <ChevronRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -756,7 +867,7 @@ export default function Site() {
                 <p className="text-sm text-neutral-600 mt-0.5">Two steps. No payment required at this stage.</p>
               </div>
               <Button asChild className="rounded-xl shrink-0">
-                <a href="#dbf">Get an ADU Quote</a>
+                <a href="#dbf" onClick={() => track("adu_quote_click")}>Get an ADU Quote</a>
               </Button>
             </div>
           </FadeIn>
@@ -779,13 +890,13 @@ export default function Site() {
                 <div className="h-9 w-9 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
                   <Phone className="h-4 w-4" />
                 </div>
-                <span>(786) 440-4097</span>
+                <a href="tel:+17864404097" onClick={() => track("phone_click")} className="hover:text-neutral-900">(786) 440-4097</a>
               </div>
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
                   <Mail className="h-4 w-4" />
                 </div>
-                <a className="underline hover:text-neutral-900" href="mailto:info@designbuild-us.com">info@designbuild-us.com</a>
+                <a className="underline hover:text-neutral-900" href="mailto:info@designbuild-us.com" onClick={() => track("email_click")}>info@designbuild-us.com</a>
               </div>
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
